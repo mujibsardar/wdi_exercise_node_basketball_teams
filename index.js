@@ -32,17 +32,17 @@ app.get('/teams/:id', (req, res) => {
 })
 
 
+  app.get('/teams/:id', (req, res) => {
+    Team.findByIdAndUpdate(req.params.id, req.params.body, {new: true}, (err, updatedTeam) => {
+      res.json({success: true, team: updatedTeam})
+    })
+  })
 
-
-
-
-
-
-
-
-
-
-
+  app.delete('/teams/:id', (req, res) => {
+    Team.findByIdAndRemove(req.params.id, (err, deletedTeam) => {
+      res.json({success: true, removed: deletedTeam})
+    })
+  })
 
 app.listen(3000, (err) => {
   console.log(err || "Server running on 3000.");
