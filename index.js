@@ -10,6 +10,26 @@ const
     console.log(err || "Connected to mongo!")
   })
 
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+
+app.get('/teams', (req, res) => {
+  Team.find({}, (err, teamsFromDB) => {
+    res.json(teamsFromDB)
+  })
+})
+
+app.post('/teams', (req, res) => {
+  Team.create(req.body, (err, newTeam) => {
+    res.join({success: true, team: newTeam})
+  })
+})
+
+app.get('/teams/:id', (req, res) => {
+  Team.findById(req.params.id, (err, singleTeam) => {
+    res.json(singleTeam)
+  })
+})
 
 
 
