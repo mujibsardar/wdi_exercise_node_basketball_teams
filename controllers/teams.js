@@ -25,7 +25,7 @@ module.exports = {
     })
   },
 
-  delete: (req, res) => {
+  destroy: (req, res) => {
     Team.findByIdAndRemove(req.params.id, (err, deletedTeam) => {
       res.json({success: true, removed: deletedTeam})
     })
