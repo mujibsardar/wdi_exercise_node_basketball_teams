@@ -21,7 +21,7 @@ app.get('/teams', (req, res) => {
 
 app.post('/teams', (req, res) => {
   Team.create(req.body, (err, newTeam) => {
-    res.join({success: true, team: newTeam})
+    res.json({success: true, team: newTeam})
   })
 })
 
