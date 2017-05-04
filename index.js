@@ -16,7 +16,7 @@ const
     })
   })
 
-  app.get('/teams/:id', (req, res) => {
+  app.patch('/teams/:id', (req, res) => {
     Team.findByIdAndUpdate(req.params.id, req.params.body, {new: true}, (err, updatedTeam) => {
       res.json({success: true, team: updatedTeam})
     })
